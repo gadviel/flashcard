@@ -10,7 +10,8 @@ private void loadFile(File selectedFile) {
             makeCard(line);
         }
 
-    } catch (Exception e) {
+    } 
+    catch (Exception e) {
         System.out.println("Couldn't read the file card");
         e.printStackTrace();
     }
@@ -19,9 +20,9 @@ private void loadFile(File selectedFile) {
 }
 
 private void makeCard(String lineToParse) {
-    String [] result = lineToParse.split("/")
+    String [] result = lineToParse.split("/");
 
-    FlashCard card = new FlashCard(reuslt[0], result[1]);
+    FlashCard card = new FlashCard(result[0], result[1]);
     cardlist.add(card);
 }
 
