@@ -29,10 +29,10 @@ public class FlashCardBuilder {
         JPanel mainPanel = new JPanel();
 
         // FONT
-        Font font = new Font("Helvetica Neue", Font.BOLD, 21);
+        Font font = new Font("Arial", Font.BOLD, 21);
 
         // QUESTION
-        question = new JTextArea(5, 16);
+        question = new JTextArea(6, 16);
         question.setLineWrap(true);
         question.setWrapStyleWord(true);
         question.setFont(font);
@@ -41,7 +41,7 @@ public class FlashCardBuilder {
         questionScroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         // ANSWER
-        answer = new JTextArea(5, 16);
+        answer = new JTextArea(6, 16);
         answer.setLineWrap(true);
         answer.setWrapStyleWord(true);
         answer.setFont(font);
