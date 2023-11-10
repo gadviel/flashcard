@@ -29,7 +29,7 @@ public class FlashCardBuilder {
         JPanel mainPanel = new JPanel();
 
         // FONT
-        Font font = new Font("Helvetica Neue", Font.BOLD, 21);
+        Font font = new Font("Arial", Font.BOLD, 21);
 
         // QUESTION
         question = new JTextArea(5, 16);
