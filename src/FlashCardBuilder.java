@@ -113,7 +113,7 @@ public class FlashCardBuilder {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("New Menu clicked");
+            System.out.println("New Menu Clicked");
             throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
         }
 
@@ -123,7 +123,7 @@ public class FlashCardBuilder {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Save Menu clicked");
+            System.out.println("Save Menu Clicked");
             throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
         }
 
