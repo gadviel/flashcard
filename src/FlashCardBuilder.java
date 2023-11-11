@@ -2,7 +2,11 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -123,9 +127,16 @@ public class FlashCardBuilder {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Save Menu Clicked");
-            throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+            FlashCard card = new FlashCard(question.getText(), answer.getText());
+            cardList.add(card);
+
+            // FILE CHOOSER
+            JFileChooser fileSave = new JFileChooser();
+            fileSave.showSaveDialog(frame);
+            saveFile(fileSave.getSelectedFile());
         }
+
+        
 
     }
 
@@ -134,4 +145,25 @@ public class FlashCardBuilder {
         answer.setText("");
         question.requestFocus();
     }
+    private void saveFile(File selectedFile) {
+        try {
+            
+            BufferedWriter writer = new BufferedWriter(new FileWriter(selectedFile));
+            
+            Iterator<FlashCard> cardIterator = cardList.iterator();
+
+            while (cardIterator.hasNext()) {
+                FlashCard card = (FlashCard)cardIterator.next();
+                writer.write(card.getQuestion() + "/");
+                writer.write(card.getAnswer() + "\n");
+            }
+            writer.close();
+            
+            
+        } catch (Exception e) {
+            System.out.println("Couldn't write to file");
+            e.printStackTrace();
+
+        }
+        }
 }
