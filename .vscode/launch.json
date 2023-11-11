@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "FlashcardPlayer",
+            "request": "launch",
+            "mainClass": "FlashcardPlayer",
+            "projectName": "flashcard-1_1be5f1cf"
+        },
+        {
+            "type": "java",
             "name": "FlashCardPlayer",
             "request": "launch",
             "mainClass": "FlashCardPlayer",

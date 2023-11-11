@@ -5,7 +5,7 @@ import java.awt.BorderLayout;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.StringTokenizer;
+
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -23,34 +23,34 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class FlashCardPlayer {
+public class FlashcardPlayer {
 
     
     private JTextArea display;
-    private JTextArea answer;
+    
     private ArrayList<FlashCard> cardList;
     private Iterator<FlashCard> cardIterator;
     private FlashCard currentCard;
-    private int currentCardIndex;
+    
     private JButton showAnswer;
     private JFrame frame;
     private boolean isShowAnswer;
 
-    public FlashCardPlayer (){
+    public FlashcardPlayer (){
 
         // BUILD UI
         frame = new JFrame("Flash Card Player");
         JPanel mainPanel = new JPanel();
-        Font mFont = new Font ("Helvetica Neue", Font.BOLD, 22);
+        Font mFont = new Font ("Helvetica Neue", Font.BOLD, 21);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        display = new JTextArea(10, 20);
+        display = new JTextArea(5, 16);
         display.setFont(mFont);
 
         JScrollPane qJScrollPane = new JScrollPane(display);
         qJScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        qJScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        qJScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         showAnswer = new JButton("Show Answer");
 
@@ -67,10 +67,10 @@ public class FlashCardPlayer {
         fileMenu.add(loadJMenuItem);
         menuBar.add(fileMenu);
 
-        // Add to frame
+        // ADD TO FRAME
         frame.setJMenuBar(menuBar);
         frame.getContentPane().add(BorderLayout.CENTER, mainPanel);
-        frame.setSize(640, 500);
+        frame.setSize(480, 240);
         frame.setVisible(true);
     }
 
@@ -80,7 +80,7 @@ public static void main(String[] args) {
 
             @Override
             public void run() {
-                new FlashCardPlayer();
+                new FlashcardPlayer();
             }
         });
     }
