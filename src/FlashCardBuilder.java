@@ -87,6 +87,7 @@ public class FlashCardBuilder {
         frame.getContentPane().add(BorderLayout.CENTER, mainPanel);
         frame.setSize(360, 480);
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
     }
 
     public static void main(String[] args) throws Exception {

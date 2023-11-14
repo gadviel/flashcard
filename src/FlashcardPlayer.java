@@ -35,12 +35,13 @@ public class FlashcardPlayer {
     private JButton showAnswer;
     private JFrame frame;
     private boolean isShowAnswer;
+    private JPanel mainPanel;
 
     public FlashcardPlayer (){
 
         // BUILD UI
         frame = new JFrame("Flash Card Player");
-        JPanel mainPanel = new JPanel();
+        mainPanel = new JPanel();
         Font mFont = new Font ("Helvetica Neue", Font.BOLD, 21);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,6 +77,7 @@ public class FlashcardPlayer {
         frame.getContentPane().add(BorderLayout.CENTER, mainPanel);
         frame.setSize(480, 240);
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
     }
 
 public static void main(String[] args) {
