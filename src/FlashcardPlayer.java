@@ -62,10 +62,14 @@ public class FlashcardPlayer {
         JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("File");
         JMenuItem loadJMenuItem = new JMenuItem("Load Card Set");
+        JMenuItem backMenuItem = new JMenuItem("Back");
         loadJMenuItem.addActionListener(new OpenMenuListener());
+        backMenuItem.addActionListener(new BackMenuItemListener());
 
-        fileMenu.add(loadJMenuItem);
         menuBar.add(fileMenu);
+        fileMenu.add(loadJMenuItem);
+        fileMenu.add(backMenuItem);
+        
 
         // ADD TO FRAME
         frame.setJMenuBar(menuBar);
@@ -114,6 +118,15 @@ public static void main(String[] args) {
             if (ret == JFileChooser.APPROVE_OPTION) {
                 loadFile(fileOpen.getSelectedFile());
             }
+        }
+    }
+
+    class BackMenuItemListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+            new FlashcardSelection().setVisible(true);
         }
     }
 

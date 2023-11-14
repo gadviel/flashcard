@@ -8,14 +8,6 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.SwingUtilities;
 import javax.swing.*;
 
 public class FlashCardBuilder {
@@ -23,6 +15,7 @@ public class FlashCardBuilder {
     private JTextArea answer;
     private ArrayList<FlashCard> cardList;
     private JFrame frame;
+    
 
     // Build the user interface
     public FlashCardBuilder() {
@@ -36,7 +29,7 @@ public class FlashCardBuilder {
         Font font = new Font("Arial", Font.BOLD, 21);
 
         // QUESTION
-        question = new JTextArea(6, 16);
+        question = new JTextArea(5, 16);
         question.setLineWrap(true);
         question.setWrapStyleWord(true);
         question.setFont(font);
@@ -45,7 +38,7 @@ public class FlashCardBuilder {
         questionScroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         // ANSWER
-        answer = new JTextArea(6, 16);
+        answer = new JTextArea(5, 16);
         answer.setLineWrap(true);
         answer.setWrapStyleWord(true);
         answer.setFont(font);
@@ -73,17 +66,20 @@ public class FlashCardBuilder {
         JMenuBar MenuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("File");
         JMenuItem newMenuItem = new JMenuItem("New");
-
         JMenuItem saveMenuItem = new JMenuItem("Save");
+        JMenuItem backMenuItem = new JMenuItem("Back");
 
-        fileMenu.add(newMenuItem);
-        fileMenu.add(saveMenuItem);
 
         MenuBar.add(fileMenu);
+        fileMenu.add(newMenuItem);
+        fileMenu.add(saveMenuItem);
+        fileMenu.add(backMenuItem);
+        
 
         // ADD EVENTLISTENERS
         newMenuItem.addActionListener(new NewMenuItemListener());
         saveMenuItem.addActionListener(new SaveMenuListener());
+        backMenuItem.addActionListener(new BackMenuItemListener());
 
         frame.setJMenuBar(MenuBar);
 
@@ -140,6 +136,19 @@ public class FlashCardBuilder {
 
     }
 
+    class BackMenuItemListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+            new FlashcardSelection().setVisible(true);
+        }
+
+
+        
+
+    }
+    
     private void clearCard() {
         question.setText("");
         answer.setText("");

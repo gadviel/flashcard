@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "FlashcardSelection",
+            "request": "launch",
+            "mainClass": "FlashcardSelection",
+            "projectName": "flashcard-1_1be5f1cf"
+        },
+        {
+            "type": "java",
+            "name": "JFrame",
+            "request": "launch",
+            "mainClass": "JFrame",
+            "projectName": "flashcard-1_1be5f1cf"
+        },
+        {
+            "type": "java",
             "name": "FlashcardPlayer",
             "request": "launch",
             "mainClass": "FlashcardPlayer",
