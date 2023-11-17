@@ -1,5 +1,3 @@
-import java.awt.BorderLayout;
-import java.awt.Font;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.BufferedWriter;
@@ -9,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 public class FlashCardBuilder {
     private JTextArea question;
@@ -23,7 +22,15 @@ public class FlashCardBuilder {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // PANEL
-        JPanel mainPanel = new JPanel();
+        frame.setBounds(100, 100, 563, 312);
+        frame.setResizable(false);
+		JPanel mainPanel = new JPanel();
+		mainPanel.setBackground(new Color(231, 202, 41));
+		mainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        
+
+		frame.setContentPane(mainPanel);
+		mainPanel.setLayout(null);
 
         // FONT
         Font font = new Font("Arial", Font.BOLD, 21);
@@ -46,13 +53,24 @@ public class FlashCardBuilder {
         answerScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         answerScroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        JButton nextButton = new JButton("Next Card");
+        Button nextButton = new Button("Next Card");
+		nextButton.setForeground(Color.BLACK);
+	    nextButton.setFont(new Font("Garamond", Font.PLAIN, 12));
+		nextButton.setBackground(new Color(255, 255, 255));
+		nextButton.setBounds(216, 227, 108, 23);
+		mainPanel.add(nextButton);
 
         cardList = new ArrayList<FlashCard>();
 
         // LABELS
-        JLabel questionLabel = new JLabel("Question");
-        JLabel answerLabel = new JLabel("Answer");
+        JLabel questionLabel = new JLabel("FRONT");
+		questionLabel.setFont(new Font("Segoe UI", Font.BOLD, 13));
+		questionLabel.setBounds(21, 11, 58, 14);
+		mainPanel.add(questionLabel);
+        JLabel answerLabel = new JLabel("BACK");
+		answerLabel.setFont(new Font("Segoe UI", Font.BOLD, 13));
+		answerLabel.setBounds(295, 11, 58, 14);
+		mainPanel.add(answerLabel);
 
         // MAIN PANEL COMPONENTS
         mainPanel.add(questionLabel);
@@ -84,8 +102,7 @@ public class FlashCardBuilder {
         frame.setJMenuBar(MenuBar);
 
         // ADD TO THE FRAME
-        frame.getContentPane().add(BorderLayout.CENTER, mainPanel);
-        frame.setSize(360, 480);
+        frame.setSize(563, 330);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
     }
