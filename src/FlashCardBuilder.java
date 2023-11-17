@@ -53,6 +53,15 @@ public class FlashCardBuilder {
         answerScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         answerScroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
+        // TEXT AREA
+        JTextArea textArea = new JTextArea();
+		textArea.setBounds(295, 33, 222, 176);
+		mainPanel.add(textArea);
+		
+		JTextArea textArea1 = new JTextArea();
+		textArea1.setBounds(21, 33, 222, 176);
+		mainPanel.add(textArea1);
+
         Button nextButton = new Button("Next Card");
 		nextButton.setForeground(Color.BLACK);
 	    nextButton.setFont(new Font("Garamond", Font.PLAIN, 12));
