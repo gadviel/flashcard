@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 
@@ -156,7 +157,7 @@ public static void main(String[] args) {
         String[] result = lineToParse.split("/");
         FlashCard card = new FlashCard(result[0], result[1]);
         cardList.add(card);
-        
+        Collections.shuffle(cardList);
     }
 
     private void showNextCard() {
