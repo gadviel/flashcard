@@ -1,3 +1,9 @@
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.UIManager;
+
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+
 public class FlashcardSelection extends javax.swing.JFrame {
 
     /**
@@ -15,6 +21,12 @@ public class FlashcardSelection extends javax.swing.JFrame {
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
+
+         try {
+            UIManager.setLookAndFeel(new FlatMacDarkLaf());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -69,6 +81,11 @@ public class FlashcardSelection extends javax.swing.JFrame {
         );
 
         pack();
+
+        setLocationRelativeTo(null);
+
+         setIconImage(new ImageIcon("src\\icon.jpg").getImage());
+
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         

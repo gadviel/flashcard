@@ -8,6 +8,7 @@ import java.util.Iterator;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 public class FlashCardBuilder {
     private JTextArea question;
@@ -20,13 +21,15 @@ public class FlashCardBuilder {
     public FlashCardBuilder() {
         frame = new JFrame("Flash Card");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // PANEL
+        frame.setIconImage(new ImageIcon("src\\icon.jpg").getImage());
         frame.setBounds(100, 100, 563, 312);
         frame.setResizable(false);
+
+        // PANEL
 		JPanel mainPanel = new JPanel();
-		mainPanel.setBackground(new Color(231, 202, 41));
+		//mainPanel.setBackground(new Color(255, 87, 51, 150));
 		mainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        mainPanel.setBorder(new LineBorder(new Color(0, 0, 66, 10), 5));
 
 
 		frame.setContentPane(mainPanel);
@@ -63,11 +66,10 @@ public class FlashCardBuilder {
         nextButton.setBackground(new Color(255, 255, 255));
         nextButton.setBounds(216, 227, 108, 23);
         mainPanel.add(nextButton);
-        System.out.println("This is working");
 
         cardList = new ArrayList<FlashCard>();
 
-        // TEXT AREA
+        // This "TEXT AREA" is under construction
         //JTextArea textArea = new JTextArea();
 		//textArea.setBounds(295, 33, 222, 176);
 		//mainPanel.add(textArea);
@@ -177,6 +179,7 @@ public class FlashCardBuilder {
         answer.setText("");
         question.requestFocus();
     }
+    
     private void saveFile(File selectedFile) {
         try {
 
@@ -194,7 +197,6 @@ public class FlashCardBuilder {
         } catch (Exception e) {
             System.out.println("Couldn't write to file");
             e.printStackTrace();
-
         }
     }
 }

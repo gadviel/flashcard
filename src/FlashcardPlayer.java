@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
-
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -15,6 +14,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JScrollPane;
@@ -25,7 +25,6 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class FlashcardPlayer {
-
     
     private JTextArea display;
     
@@ -42,13 +41,15 @@ public class FlashcardPlayer {
 
         // BUILD UI
         frame = new JFrame("Flash Card Player");
-        mainPanel = new JPanel();
-        Font mFont = new Font ("Helvetica Neue", Font.BOLD, 21);
-
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        Font mFont = new Font ("Helvetica Neue", Font.BOLD, 21);
 
         display = new JTextArea(5, 16);
         display.setFont(mFont);
+        display.setEditable(false);
+        display.setLineWrap(true);
+        display.setWrapStyleWord(true);
 
         JScrollPane qJScrollPane = new JScrollPane(display);
         qJScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -56,6 +57,7 @@ public class FlashcardPlayer {
 
         showAnswer = new JButton("Show Answer");
 
+        mainPanel = new JPanel();
         mainPanel.add(qJScrollPane);
         mainPanel.add(showAnswer);
         showAnswer.addActionListener(new NextCardListener());
@@ -79,10 +81,11 @@ public class FlashcardPlayer {
         frame.setSize(480, 240);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
+        frame.setIconImage(new ImageIcon("src\\icon.jpg").getImage());
     }
 
 public static void main(String[] args) {
-
+        
         SwingUtilities.invokeLater(new Runnable() {
 
             @Override
@@ -91,6 +94,7 @@ public static void main(String[] args) {
             }
         });
     }
+
 
     class NextCardListener implements ActionListener {
 
@@ -124,6 +128,7 @@ public static void main(String[] args) {
         }
     }
 
+
     class BackMenuItemListener implements ActionListener {
 
         @Override
@@ -132,6 +137,7 @@ public static void main(String[] args) {
             new FlashcardSelection().setVisible(true);
         }
     }
+
 
     private void loadFile(File selectedFile) {
         cardList = new ArrayList<FlashCard>();
@@ -151,6 +157,7 @@ public static void main(String[] args) {
         showNextCard();
     }
 
+
     private void makeCard(String lineToParse) {
 
         
@@ -159,6 +166,7 @@ public static void main(String[] args) {
         cardList.add(card);
         Collections.shuffle(cardList);
     }
+
 
     private void showNextCard() {
         currentCard = cardIterator.next();
