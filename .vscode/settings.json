@@ -2,7 +2,6 @@
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "c:\\Users\\XD\\OneDrive\\Desktop\\Coding related\\flatlaf-3.2.5.jar"
+        "lib/**/*.jar"
     ]
 }
