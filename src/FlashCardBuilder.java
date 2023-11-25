@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.event.*;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -20,10 +21,11 @@ public class FlashCardBuilder {
     // Build the user interface
     public FlashCardBuilder() {
         frame = new JFrame("Flash Card");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setIconImage(new ImageIcon("src\\icon.jpg").getImage());
         frame.setBounds(100, 100, 563, 312);
         frame.setResizable(false);
+        
 
         // PANEL
 		JPanel mainPanel = new JPanel();
@@ -65,7 +67,11 @@ public class FlashCardBuilder {
         nextButton.setFont(new Font("Garamond", Font.PLAIN, 12));
         nextButton.setBackground(new Color(255, 255, 255));
         nextButton.setBounds(216, 227, 108, 23);
-        mainPanel.add(nextButton);
+        
+        
+        
+       
+        
 
         cardList = new ArrayList<FlashCard>();
 
@@ -95,7 +101,9 @@ public class FlashCardBuilder {
         mainPanel.add(answerLabel);
         mainPanel.add(answerScroll);
         mainPanel.add(nextButton);
+        
         nextButton.addActionListener(new NextCardListener());
+        
 
         // MENU BAR
         JMenuBar MenuBar = new JMenuBar();
@@ -113,6 +121,8 @@ public class FlashCardBuilder {
         newMenuItem.addActionListener(new NewMenuItemListener());
         saveMenuItem.addActionListener(new SaveMenuListener());
         backMenuItem.addActionListener(new BackMenuItemListener());
+        
+        
 
         frame.setJMenuBar(MenuBar);
 
@@ -169,10 +179,28 @@ public class FlashCardBuilder {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            frame.dispose();
-            new FlashcardSelection().setVisible(true);
+            int option = JOptionPane.showOptionDialog
+                (null, "Go back to main menu?", "", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, null, null);
+                if(option == JOptionPane.YES_OPTION){
+                    frame.dispose();
+                    new FlashcardSelection().setVisible(true);
+    }
         }
     }
+
+    class WindowStateListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            int option = JOptionPane.showOptionDialog
+                (null, FlashCardBuilder.this, "Are you sure you want to exit?", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, null, null);
+                if(option == JOptionPane.YES_OPTION){
+                    frame.dispose();
+                    new FlashcardSelection().setVisible(true);
+    }
+    
+        }
+    }
+
+    
 
     private void clearCard() {
         question.setText("");
@@ -199,4 +227,5 @@ public class FlashCardBuilder {
             e.printStackTrace();
         }
     }
+    
 }
