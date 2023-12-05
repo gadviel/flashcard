@@ -2,11 +2,9 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
-
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -18,7 +16,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JScrollPane;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -27,11 +24,9 @@ import java.io.IOException;
 public class FlashcardPlayer {
     
     private JTextArea display;
-    
     private ArrayList<FlashCard> cardList;
     private Iterator<FlashCard> cardIterator;
     private FlashCard currentCard;
-    
     private JButton showAnswer;
     private JFrame frame;
     private boolean isShowAnswer;
@@ -57,23 +52,22 @@ public class FlashcardPlayer {
 
         showAnswer = new JButton("Show Answer");
 
+        // MAIN PANEL COMPONENTS
         mainPanel = new JPanel();
         mainPanel.add(qJScrollPane);
         mainPanel.add(showAnswer);
         showAnswer.addActionListener(new NextCardListener());
 
-        // ADD MENU
+        // MENU BAR
         JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("File");
         JMenuItem loadJMenuItem = new JMenuItem("Load Card Set");
         JMenuItem backMenuItem = new JMenuItem("Back");
-        loadJMenuItem.addActionListener(new OpenMenuListener());
-        backMenuItem.addActionListener(new BackMenuItemListener());
-
         menuBar.add(fileMenu);
         fileMenu.add(loadJMenuItem);
         fileMenu.add(backMenuItem);
-        
+        loadJMenuItem.addActionListener(new OpenMenuListener());
+        backMenuItem.addActionListener(new BackMenuItemListener());
 
         // ADD TO FRAME
         frame.setJMenuBar(menuBar);
@@ -84,6 +78,8 @@ public class FlashcardPlayer {
         frame.setIconImage(new ImageIcon("src\\icon.jpg").getImage());
     }
 
+
+    // PUBLIC STATIC VOID MAIN (STRING [] ARGS)
 public static void main(String[] args) {
         
         SwingUtilities.invokeLater(new Runnable() {
@@ -95,7 +91,8 @@ public static void main(String[] args) {
         });
     }
 
-
+    
+// LISTERNERS AND METHODS
     class NextCardListener implements ActionListener {
 
         @Override
@@ -152,6 +149,7 @@ public static void main(String[] args) {
             System.out.println("Couldn't read the card file");
             e.printStackTrace();
         }
+
         // FIRST CARD
         cardIterator = cardList.iterator();
         showNextCard();
@@ -159,12 +157,11 @@ public static void main(String[] args) {
 
 
     private void makeCard(String lineToParse) {
-
-        
         String[] result = lineToParse.split("/");
         FlashCard card = new FlashCard(result[0], result[1]);
         cardList.add(card);
         Collections.shuffle(cardList);
+
     }
 
 

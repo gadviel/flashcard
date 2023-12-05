@@ -9,6 +9,13 @@
             "name": "FlashcardSelection",
             "request": "launch",
             "mainClass": "FlashcardSelection",
+            "projectName": "flashcard_c638faeb"
+        },
+        {
+            "type": "java",
+            "name": "FlashcardSelection",
+            "request": "launch",
+            "mainClass": "FlashcardSelection",
             "projectName": "flashcard_463e47a6"
         },
         {

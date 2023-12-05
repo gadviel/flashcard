@@ -18,7 +18,7 @@ public class FlashCardBuilder {
     private JFrame frame;
 
 
-    // Build the user interface
+    // BUILD THE USER INTERFACE
     public FlashCardBuilder() {
         frame = new JFrame("Flash Card");
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -29,16 +29,13 @@ public class FlashCardBuilder {
 
         // PANEL
 		JPanel mainPanel = new JPanel();
-		//mainPanel.setBackground(new Color(255, 87, 51, 150));
 		mainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         mainPanel.setBorder(new LineBorder(new Color(0, 0, 66, 10), 5));
-
-
 		frame.setContentPane(mainPanel);
 		mainPanel.setLayout(null);
 
         // FONT
-        Font font = new Font("Arial", Font.BOLD, 21);
+        Font font = new Font("Helvetica Neue", Font.BOLD, 21);
 
         // QUESTION
         question = new JTextArea(5, 16);
@@ -67,14 +64,7 @@ public class FlashCardBuilder {
         nextButton.setFont(new Font("Garamond", Font.PLAIN, 12));
         nextButton.setBackground(new Color(255, 255, 255));
         nextButton.setBounds(216, 227, 108, 23);
-        
-        
-        
-       
-        
-
         cardList = new ArrayList<FlashCard>();
-
         // This "TEXT AREA" is under construction
         //JTextArea textArea = new JTextArea();
 		//textArea.setBounds(295, 33, 222, 176);
@@ -101,10 +91,8 @@ public class FlashCardBuilder {
         mainPanel.add(answerLabel);
         mainPanel.add(answerScroll);
         mainPanel.add(nextButton);
-        
         nextButton.addActionListener(new NextCardListener());
         
-
         // MENU BAR
         JMenuBar MenuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("File");
@@ -117,21 +105,23 @@ public class FlashCardBuilder {
         fileMenu.add(saveMenuItem);
         fileMenu.add(backMenuItem);
 
+
         // ADD EVENTLISTENERS
         newMenuItem.addActionListener(new NewMenuItemListener());
         saveMenuItem.addActionListener(new SaveMenuListener());
         backMenuItem.addActionListener(new BackMenuItemListener());
         
-        
-
-        frame.setJMenuBar(MenuBar);
 
         // ADD TO THE FRAME
+        frame.setJMenuBar(MenuBar);
         frame.setSize(563, 330);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
+        
     }
 
+
+    // PUBLIC STATIC VOID MAIN (STRING [] ARGS)
     public static void main(String[] args) throws Exception {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -140,16 +130,22 @@ public class FlashCardBuilder {
         });
     }
 
+    
+    // LISTENERS AND METHODS
+
     class NextCardListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            // create a flash card
+
+            // CREATE A FLASHCARD
             FlashCard card = new FlashCard(question.getText(), answer.getText());
             cardList.add(card);
             clearCard();
         }
     }
+
+    
 
     class NewMenuItemListener implements ActionListener {
 
@@ -199,8 +195,6 @@ public class FlashCardBuilder {
     
         }
     }
-
-    
 
     private void clearCard() {
         question.setText("");
