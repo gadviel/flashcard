@@ -11,11 +11,6 @@ public class FlashcardSelection extends javax.swing.JFrame {
     }
                      
     private void initComponents() {
-         try {
-            UIManager.setLookAndFeel(new FlatMacDarkLaf());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -25,7 +20,6 @@ public class FlashcardSelection extends javax.swing.JFrame {
 
        JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setIcon(new ImageIcon("src\\Logo.png"));
-
         jButton1.setFont(new java.awt.Font("Quicksand Book", 0, 14)); // NOI18N
         jButton1.setText("Flashcard Builder");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -95,21 +89,10 @@ public class FlashcardSelection extends javax.swing.JFrame {
     
     public static void main(String args[]) {
         
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FlashcardSelection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FlashcardSelection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FlashcardSelection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FlashcardSelection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+       try {
+            UIManager.setLookAndFeel(new FlatMacDarkLaf());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
        
         java.awt.EventQueue.invokeLater(new Runnable() {

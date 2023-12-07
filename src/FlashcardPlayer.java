@@ -12,6 +12,10 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -81,6 +85,12 @@ public class FlashcardPlayer {
 
     // PUBLIC STATIC VOID MAIN (STRING [] ARGS)
 public static void main(String[] args) {
+
+    try {
+            UIManager.setLookAndFeel(new FlatMacDarkLaf());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         
         SwingUtilities.invokeLater(new Runnable() {
 
@@ -161,7 +171,6 @@ public static void main(String[] args) {
         FlashCard card = new FlashCard(result[0], result[1]);
         cardList.add(card);
         Collections.shuffle(cardList);
-
     }
 
 

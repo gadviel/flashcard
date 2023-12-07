@@ -11,6 +11,8 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+
 public class FlashCardBuilder {
     private JTextArea question;
     private JTextArea answer;
@@ -21,7 +23,7 @@ public class FlashCardBuilder {
     // BUILD THE USER INTERFACE
     public FlashCardBuilder() {
         frame = new JFrame("Flash Card");
-        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setIconImage(new ImageIcon("src\\icon.jpg").getImage());
         frame.setBounds(100, 100, 563, 312);
         frame.setResizable(false);
@@ -65,6 +67,7 @@ public class FlashCardBuilder {
         nextButton.setBackground(new Color(255, 255, 255));
         nextButton.setBounds(216, 227, 108, 23);
         cardList = new ArrayList<FlashCard>();
+        
         // This "TEXT AREA" is under construction
         //JTextArea textArea = new JTextArea();
 		//textArea.setBounds(295, 33, 222, 176);
@@ -123,6 +126,13 @@ public class FlashCardBuilder {
 
     // PUBLIC STATIC VOID MAIN (STRING [] ARGS)
     public static void main(String[] args) throws Exception {
+
+        try {
+            UIManager.setLookAndFeel(new FlatMacDarkLaf());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 new FlashCardBuilder();
@@ -192,7 +202,6 @@ public class FlashCardBuilder {
                     frame.dispose();
                     new FlashcardSelection().setVisible(true);
     }
-    
         }
     }
 
