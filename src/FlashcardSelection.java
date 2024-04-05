@@ -15,11 +15,12 @@ public class FlashcardSelection extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        
+        JLabel lblNewLabel = new JLabel();
+		lblNewLabel.setIcon(new ImageIcon("src\\Logo.png"));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-       JLabel lblNewLabel = new JLabel();
-		lblNewLabel.setIcon(new ImageIcon("src\\Logo.png"));
         jButton1.setFont(new java.awt.Font("Quicksand Book", 0, 14)); // NOI18N
         jButton1.setText("Flashcard Builder");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
